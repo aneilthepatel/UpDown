@@ -56,38 +56,38 @@ class App extends Component {
     this.setState({ storageValue: response });
   };
 
-  startGame = async () => {
+  startGame = async (gameTime) => {
     const { accounts, upDownInstance } = this.state;
     console.log("calling contract")
     // Stores a given value, 5 by default.
-    let response = await upDownInstance.methods.owner().send({ from: accounts[0] });
+    let response = await upDownInstance.methods.startGame(gameTime).send({ from: accounts[0] });
 
     console.log(response)
   };
 
-  setBonus = async () => {
+  setBonus = async (bonus) => {
     const { accounts, upDownInstance } = this.state;
     console.log("calling contract")
     // Stores a given value, 5 by default.
-    let response = await upDownInstance.methods.setBonus().send({ from: accounts[0] });
+    let response = await upDownInstance.methods.setBonus(bonus).send({ from: accounts[0] });
 
     console.log(response)
   };
 
-  reportResult = async () => {
+  reportResult = async (winner,loser) => {
     const { accounts, upDownInstance } = this.state;
     console.log("calling contract")
     // Stores a given value, 5 by default.
-    let response = await upDownInstance.methods.reportResult().send({ from: accounts[0] });
+    let response = await upDownInstance.methods.reportResult(winner,loser).send({ from: accounts[0] });
 
     console.log(response)
   };
 
-  placeBet = async () => {
+  placeBet = async (bet) => {
     const { accounts, upDownInstance } = this.state;
     console.log("calling contract")
     // Stores a given value, 5 by default.
-    let response = await upDownInstance.methods.placeBet().send({ from: accounts[0] });
+    let response = await upDownInstance.methods.placeBet(bet).send({ from: accounts[0], value:this.state.web3.utils.toWei("1", 'ether') });
 
     console.log(response)
   };

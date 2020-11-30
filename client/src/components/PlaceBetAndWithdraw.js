@@ -8,12 +8,12 @@ export default function PlaceBetAndWithdraw({placeBet, withdrawGain}) {
             <h1> Up Down Place Bet Withdraw</h1>
             <Grid container spacing={1}>
                 <Grid item xs={4}>
-                    <Button onClick={placeBet} variant="contained" color="primary">
+                    <Button onClick={()=>placeBet(0)} variant="contained" color="primary">
                         Up
                 </Button>
                 </Grid>
                 <Grid item xs={4}>
-                    <Button onClick={placeBet} variant="contained" color="primary">
+                    <Button onClick={()=>placeBet(1)} variant="contained" color="primary">
                         Down
                 </Button>
                 </Grid>
