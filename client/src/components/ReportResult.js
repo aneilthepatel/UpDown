@@ -11,29 +11,28 @@ export default function ReportResult({ reportResult }) {
             <h1>Report Result</h1>
             <Grid container spacing={1}>
                 <Grid item xs={5}>
-                    <TextField value={winner} onChange={(e) =>{
-                        if(e.target.value === ''){
+                    <TextField value={winner} onChange={(e) => {
+                        if (e.target.value === '') {
                             setwinner('')
                         }
-                        if(["0","1"].includes(e.target.value)){
+                        if (["0", "1"].includes(e.target.value)) {
                             setwinner(e.target.value)
                         }
-                    } } id="outlined-basic" variant="outlined" type="number" label="Winner" InputLabelProps={{ shrink: true }} />
+                    }} id="outlined-basic" variant="outlined" type="number" label="Winner" InputLabelProps={{ shrink: true }} />
                 </Grid>
                 <Grid item xs={3}>
-                    <TextField value= {loser} onChange={(e) =>{
-                        if(e.target.value === ''){
+                    <TextField value={loser} onChange={(e) => {
+                        if (e.target.value === '') {
                             setloser('')
                         }
-                        if(["0","1"].includes(e.target.value)){
-                            console.log(e.target.value, ["0","1"].includes(e.target.value))
+                        if (["0", "1"].includes(e.target.value)) {
                             setloser(e.target.value)
                         }
-                    } } id="outlined-basic" variant="outlined" type="number" label="Loser" InputLabelProps={{ shrink: true }} />
+                    }} id="outlined-basic" variant="outlined" type="number" label="Loser" InputLabelProps={{ shrink: true }} />
                 </Grid>
                 <Grid item xs={2}>
                     <Button onClick={() => {
-                        if(winner !== loser){
+                        if (winner !== loser) {
                             reportResult(winner, loser)
                         }
                     }} variant="contained" color="primary">

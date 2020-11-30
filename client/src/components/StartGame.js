@@ -11,7 +11,7 @@ export default function StartGame({ startGame }) {
             <Grid container spacing={1}>
                 <Grid item xs={5}>
                     <TextField onChange={e => {
-                        if(e.target.value > 0){
+                        if (e.target.value > 0) {
                             setGameTime(e.target.value)
                         }
                     }} value={gameTime} id="outlined-basic" label="Time in Seconds" variant="outlined" InputLabelProps={{ shrink: true }} />

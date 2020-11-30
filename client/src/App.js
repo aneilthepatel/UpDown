@@ -33,7 +33,7 @@ class App extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance, upDownInstance:upDownInstance });
+      this.setState({ web3, accounts, contract: instance, upDownInstance: upDownInstance });
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -74,11 +74,11 @@ class App extends Component {
     console.log(response)
   };
 
-  reportResult = async (winner,loser) => {
+  reportResult = async (winner, loser) => {
     const { accounts, upDownInstance } = this.state;
     console.log("calling contract")
     // Stores a given value, 5 by default.
-    let response = await upDownInstance.methods.reportResult(winner,loser).send({ from: accounts[0] });
+    let response = await upDownInstance.methods.reportResult(winner, loser).send({ from: accounts[0] });
 
     console.log(response)
   };
@@ -87,7 +87,7 @@ class App extends Component {
     const { accounts, upDownInstance } = this.state;
     console.log("calling contract")
     // Stores a given value, 5 by default.
-    let response = await upDownInstance.methods.placeBet(bet).send({ from: accounts[0], value:this.state.web3.utils.toWei(amount.toString(), 'ether') });
+    let response = await upDownInstance.methods.placeBet(bet).send({ from: accounts[0], value: this.state.web3.utils.toWei(amount.toString(), 'ether') });
 
     console.log(response)
   };
@@ -106,14 +106,14 @@ class App extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-    <div className="App" style={{background: 'dimgray'}}>
-      <Home 
-        startGame={this.startGame}
-        reportResult={this.reportResult}
-        placeBet={this.placeBet}
-        withdrawGain={this.withdrawGain}
-        setBonus={this.setBonus}      
-      />
+      <div className="App" style={{ background: 'dimgray' }}>
+        <Home
+          startGame={this.startGame}
+          reportResult={this.reportResult}
+          placeBet={this.placeBet}
+          withdrawGain={this.withdrawGain}
+          setBonus={this.setBonus}
+        />
       </div>
     );
   }
