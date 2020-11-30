@@ -10,7 +10,11 @@ export default function SetBonus({setBonus}) {
         <h1>Set Bonus</h1>
             <Grid container spacing={1}>
                 <Grid item xs={5}>
-                <TextField  onChange={(e)=>setBonusPerc(e.target.value)} value={bonusPerc} id="outlined-basic" variant="outlined" label="Bonus in percent" type="number" InputLabelProps={{ shrink: true }} />
+                <TextField  onChange={(e)=>{
+                        if(e.target.value >= 0 && e.target.value <= 100 ){
+                            setBonusPerc(e.target.value)
+                        }
+                    }} value={bonusPerc} id="outlined-basic" variant="outlined" label="Bonus in percent" type="number" InputLabelProps={{ shrink: true }} />
                 </Grid>
                 <Grid item xs={2}>
                     <Button  onClick={()=>setBonus(bonusPerc)} variant="contained" color="primary">

@@ -11,13 +11,25 @@ export default function ReportResult({ reportResult }) {
             <h1>Report Result</h1>
             <Grid container spacing={1}>
                 <Grid item xs={5}>
-                    <TextField value={winner} onClick={(e) => setwinner(e.target.value)} id="outlined-basic" variant="outlined" type="number" label="Winner" InputLabelProps={{ shrink: true }} />
+                    <TextField value={winner} onClick={(e) =>{
+                        if([0,1].includes(e.target.value)){
+                            setwinner(e.target.value)
+                        }
+                    } } id="outlined-basic" variant="outlined" type="number" label="Winner" InputLabelProps={{ shrink: true }} />
                 </Grid>
                 <Grid item xs={3}>
-                    <TextField value= {loser} onClick={(e) => setloser(e.target.value)} id="outlined-basic" variant="outlined" type="number" label="Loser" InputLabelProps={{ shrink: true }} />
+                    <TextField value= {loser} onClick={(e) =>{
+                        if([0,1].includes(e.target.value)){
+                            setloser(e.target.value)
+                        }
+                    } } id="outlined-basic" variant="outlined" type="number" label="Loser" InputLabelProps={{ shrink: true }} />
                 </Grid>
                 <Grid item xs={2}>
-                    <Button onClick={() => reportResult(winner, loser)} variant="contained" color="primary">
+                    <Button onClick={() => {
+                        if(winner !== loser){
+                            reportResult(winner, loser)
+                        }
+                    }} variant="contained" color="primary">
                         Report
                 </Button>
                 </Grid>

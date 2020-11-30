@@ -83,11 +83,11 @@ class App extends Component {
     console.log(response)
   };
 
-  placeBet = async (bet) => {
+  placeBet = async (bet, amount) => {
     const { accounts, upDownInstance } = this.state;
     console.log("calling contract")
     // Stores a given value, 5 by default.
-    let response = await upDownInstance.methods.placeBet(bet).send({ from: accounts[0], value:this.state.web3.utils.toWei("1", 'ether') });
+    let response = await upDownInstance.methods.placeBet(bet).send({ from: accounts[0], value:this.state.web3.utils.toWei(amount.toString(), 'ether') });
 
     console.log(response)
   };
