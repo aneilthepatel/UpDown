@@ -2,8 +2,8 @@
 pragma solidity 0.5.16;
 
 contract UpDown {
-  uint Up;
-  uint Down;
+  uint Up=0;
+  uint Down=1;
   
   struct Result {
     uint winner;
@@ -30,6 +30,10 @@ contract UpDown {
     gameIndex++;
     return (gameIndex);
   }
+  
+  function getBalance () public view returns (uint){
+      return address(this).balance;
+  }
 
   function placeBet(uint _side )  public payable {
     require(biddingOpen  == true, 'bidding is finished');
@@ -45,12 +49,12 @@ contract UpDown {
       bonus = _bonus;
   }
 
-  function withdrawGain() external {
+  function withdrawGain() external payable {
     uint gamblerBet = betsPerGambler[msg.sender][result.winner];
     require(gamblerBet > 0, 'you do not have any winning bet');  
     require(biddingOpen  == false, 'bidding not finished yet');
     uint gain = gamblerBet + bets[result.loser] * gamblerBet * bonus / (bets[result.winner]*100);
-    uint ownergain = gamblerBet + bets[result.loser] * gamblerBet * (100-bonus) / (bets[result.winner]*100);
+    uint ownergain = bets[result.loser] * gamblerBet * (100-bonus) / (bets[result.winner]*100);
     betsPerGambler[msg.sender][Up] = 0;
     betsPerGambler[msg.sender][Down] = 0;
     msg.sender.transfer(gain);
